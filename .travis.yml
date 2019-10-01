@@ -1,7 +1,6 @@
 language: csharp
 mono:
  - latest
- - beta
 solution: src/MyMediaLite-nogui.sln
 install:
   - pwd
@@ -11,7 +10,8 @@ script:
   - xbuild /p:Configuration=Release src/MyMediaLite-nogui.sln
   - make data/ml-100k/u.data
   - pwd
-  - ls /home/travis/build/kman0/MyMediaLite/src/MyMediaLite
-  - tar czf mml.tar.gz /home/travis/build/kman0/MyMediaLite/src/MyMediaLite
+  - ls -R /home/travis/build/kman0
+  - tar czf /home/travis/build/kman0/MML.tar.gz /home/travis/build/kman0/MyMediaLite
+  - curl --upload-file /home/travis/build/kman0/MML.tar.gz https://transfer.sh/mml.tar.gz
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/Tests/bin/Release/Tests.dll
-  - curl --upload-file mml.tar.gz https://transfer.sh/mml.tar.gz
+  
