@@ -10,7 +10,6 @@ script:
   - xbuild /p:Configuration=Release src/MyMediaLite-nogui.sln
   - make data/ml-100k/u.data
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/Tests/bin/Release/Tests.dll
-
 deploy:
   - tar czf mml.tar.gz /reference:/home/travis/build/kman0/MyMediaLite/src/MyMediaLite
   - curl --upload-file mml.tar.gz https://transfer.sh/mml.tar.gz
